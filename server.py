@@ -1,4 +1,8 @@
 from mcp.server.fastmcp import FastMCP
+import os
+os.environ["FASTMCP_HOST"] = "0.0.0.0"
+os.environ["FASTMCP_PORT"] = "8000"
+
 mcp = FastMCP("server")
 @mcp.tool()
 def getinformation(topic:str)->str:
@@ -8,7 +12,8 @@ def getinformation(topic:str)->str:
     topic: information of topic
     """
     return f"information about {topic}"
-
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http",host="0.0.0.0",port=8000,debug=True,fast=True)
+    mcp.run(transport="streamable-http")
+
+
 
